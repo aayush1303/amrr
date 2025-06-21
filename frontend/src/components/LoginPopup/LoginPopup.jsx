@@ -1,13 +1,14 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { RxCross2 } from 'react-icons/rx';
 import axios from 'axios';
 import { AuthContext } from '../../context/AuthContext';
 import { toast } from 'react-toastify';
 
 
-const LoginPopup = ({ setShowLogin}) => {
-  const {login} = useContext(AuthContext);
+const LoginPopup = ({ setShowLogin }) => {
+  const { login } = useContext(AuthContext);
   const [currState, setCurrState] = useState('Sign Up');
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,7 +21,7 @@ const LoginPopup = ({ setShowLogin}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     const endpoint =
       currState === 'Login'
         ? 'https://amrr-backend.vercel.app/api/user/login'
@@ -46,6 +47,8 @@ const LoginPopup = ({ setShowLogin}) => {
     } catch (err) {
       console.error(err);
       toast.error('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -92,9 +95,11 @@ const LoginPopup = ({ setShowLogin}) => {
         </div>
         <button
           type="submit"
-          className="p-2.5 text-white bg-teal-600 text-[15px] cursor-pointer rounded-lg"
+          disabled={loading}
+          className={`p-2.5 text-white text-[15px] cursor-pointer rounded-lg ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-teal-600 hover:bg-teal-700'
+            }`}
         >
-          {currState === "Sign Up" ? "Create Account" : "Login"}
+          {loading ? 'Please wait...' : currState === 'Sign Up' ? 'Create Account' : 'Login'}
         </button>
         <div className="flex items-start gap-2 mt-[-15px]">
           <input className="mt-[5px]" type="checkbox" required />
