@@ -45,7 +45,7 @@ const AddLists = () => {
             });
 
 
-            const res = await axios.post('http://localhost:4000/api/list/add', data, {
+            const res = await axios.post('https://amrr-backend.vercel.app/api/list/add', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': `Bearer ${token}`

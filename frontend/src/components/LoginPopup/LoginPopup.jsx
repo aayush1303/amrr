@@ -23,8 +23,8 @@ const LoginPopup = ({ setShowLogin}) => {
 
     const endpoint =
       currState === 'Login'
-        ? 'http://localhost:4000/api/user/login'
-        : 'http://localhost:4000/api/user/register';
+        ? 'https://amrr-backend.vercel.app/api/user/login'
+        : 'https://amrr-backend.vercel.app/api/user/register';
 
     try {
       const res = await axios.post(endpoint, formData);

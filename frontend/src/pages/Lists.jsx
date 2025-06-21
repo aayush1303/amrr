@@ -16,7 +16,7 @@ const Lists = () => {
     const fetchItems = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:4000/api/list/my', {
+        const res = await axios.get('https://amrr-backend.vercel.app/api/list/my', {
           headers: {
             Authorization: `Bearer ${token}`
           }
