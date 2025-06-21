@@ -1,0 +1,26 @@
+# Node modules (backend & frontend)
+**/node_modules/
+
+# Environment variables
+**/.env
+**/.env.local
+
+# Log files
+*.log
+
+# OS files
+.DS_Store
+
+# Build output
+**/dist/
+**/build/
+
+# VSCode
+.vscode/
+
+# Coverage/test results
+coverage/
+
+# npm/yarn/lock files (optional)
+**/package-lock.json
+**/yarn.lock
